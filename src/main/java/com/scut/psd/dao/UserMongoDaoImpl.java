@@ -6,7 +6,7 @@ import com.scut.psd.dao.po.User;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserMongoDao extends AbstractBaseMongoDao<User> {
+public class UserMongoDaoImpl extends AbstractBaseMongoDao<User> {
 
     @Override
     public Class<User> getEntityClass() {

@@ -2,9 +2,9 @@ package com.scut.psd.matlab;
 
 import com.scut.psd.web.entity.Algorithm;
 import com.scut.psd.web.entity.LaunchSignal;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j;
 
-@Slf4j
+@Log4j
 public class DrawPsd {
     /**
      * 根据传入的参数画图

@@ -3,7 +3,7 @@ package com.scut.psd.service;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.scut.psd.cache.LocalCache;
-import com.scut.psd.dao.DataProcessMongoDao;
+import com.scut.psd.dao.DataProcessMongoDaoImpl;
 import com.scut.psd.dao.po.CalculateData;
 import com.scut.psd.dao.po.User;
 import com.scut.psd.design.strategy.*;
@@ -12,7 +12,7 @@ import com.scut.psd.utils.DateFormatutils;
 import com.scut.psd.web.entity.Algorithm;
 import com.scut.psd.web.entity.LaunchSignal;
 import com.scut.psd.web.entity.Pagination;
-import org.apache.log4j.Logger;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Query;
@@ -24,11 +24,11 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Log4j
 public class DataProcessService {
-    private Logger logger = Logger.getLogger(DataProcessService.class);
 
     @Autowired
-    private DataProcessMongoDao dataProcessMongoDao;
+    private DataProcessMongoDaoImpl dataProcessMongoDao;
 
     @Autowired
     private UserService userService;
@@ -80,7 +80,7 @@ public class DataProcessService {
         Map<String, List<String>> resultMap = (Map<String, List<String>>) localCache.getCacheValue("resultMap");
 
         User user = userService.getUserByName();
-        CalculateData calculateData = new CalculateData(user.getId(),launchSignal,algorithm,resultMap,DateFormatutils.transForm(new Date()));
+        CalculateData calculateData = new CalculateData(user,launchSignal,algorithm,resultMap,DateFormatutils.transform(new Date()));
         dataProcessMongoDao.save(calculateData);
 
         /**移除缓存*/
@@ -97,22 +97,25 @@ public class DataProcessService {
 
         /**查询条件*/
         DBObject queryObject = new BasicDBObject();
-        queryObject.put("userId", user.getId());
+        queryObject.put("user", user);
 
         /**指定返回的字段*/
         DBObject fieldsObject=new BasicDBObject();
         fieldsObject.put("id", true);
         fieldsObject.put("algorithm", true);
         fieldsObject.put("createTime", true);
-        Query query = new BasicQuery(queryObject,fieldsObject);
+        Query query = new BasicQuery(queryObject, fieldsObject);
 
         /**获取总条数*/
         int totalRecords = (int) dataProcessMongoDao.count(query);
+
         /**获取总条数*/
         List<CalculateData> calculateDataList = dataProcessMongoDao.findByPage(currentPage, pageSize, query);
+
         /**封装pagination*/
         Pagination<CalculateData> pagination = new Pagination<>(totalRecords, currentPage, pageSize, calculateDataList);
-        logger.info(pagination);
+
+        log.info(pagination.toString());
 
         return pagination;
 
@@ -128,7 +131,7 @@ public class DataProcessService {
             calculateData = dataProcessMongoDao.findById(calId);
             /**查询结果放进cache缓存*/
             localCache.putCache(calculateData.getId(), calculateData);
-            logger.info("from mongodb" + calculateData);
+            log.info("from mongodb" + calculateData);
         }
         return calculateData;
     }

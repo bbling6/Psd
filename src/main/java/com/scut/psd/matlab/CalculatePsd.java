@@ -1,12 +1,10 @@
 package com.scut.psd.matlab;
 
-import com.scut.psd.dao.po.CalculateData;
 import com.scut.psd.utils.ArithUtils;
 import java.util.*;
 
 public class CalculatePsd {
     public static Map<String,List<String>> getResultMap(int scale){
-        CalculateData calculateData = new CalculateData();
         List<String> smc = new ArrayList<>();
         List<String> smcRelative = new ArrayList<>();
         List<String> sms = new ArrayList<>();

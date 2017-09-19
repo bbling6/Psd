@@ -1,8 +1,7 @@
 package com.scut.psd.service;
 
-import com.scut.psd.dao.UserMongoDao;
+import com.scut.psd.dao.UserMongoDaoImpl;
 import com.scut.psd.dao.po.User;
-import com.scut.psd.cache.LocalCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpSession;
 public class UserService{
 	
 	@Autowired
-	private UserMongoDao userMongoDao;
+	private UserMongoDaoImpl userMongoDaoImpl;
 
 	@Autowired
 	private HttpSession session;
@@ -24,26 +23,26 @@ public class UserService{
 	 */
 	public String register(User user) throws Exception{
 		/**用户*/
-		User userFromDb = userMongoDao.findById(String.valueOf(user.getId()));
+		User userFromDb = userMongoDaoImpl.findById(String.valueOf(user.getId()));
 		if(null != userFromDb){
 			/**用户已经存在*/
 			return "UsernameAlreadyExist";
 		}
 		/**邮箱*/
 		Query query = new Query(Criteria.where("email").is(user.getEmail()));
-		userFromDb = userMongoDao.findOne(query);
+		userFromDb = userMongoDaoImpl.findOne(query);
 		if(null!=userFromDb){
 			/**邮箱已经存在*/
 			return "EmailAlreadyExist";
 		}
 		/**手机*/
 		query = new Query(Criteria.where("mobile").is(user.getMobile()));
-		userFromDb = userMongoDao.findOne(query);
+		userFromDb = userMongoDaoImpl.findOne(query);
 		if(null!=userFromDb){
 			return "MobileAlreadyExist";
 		}
 		/**保存*/
-		userMongoDao.save(user);
+		userMongoDaoImpl.save(user);
 		return "success";
 	}
 	/**
@@ -52,15 +51,15 @@ public class UserService{
 	public boolean login(String username, String password) throws Exception {
 		/**根据用户名查询*/
 		Query query = new Query(Criteria.where("username").is(username));
-		User user = userMongoDao.findOne(query);
+		User user = userMongoDaoImpl.findOne(query);
 			if(null==user){
 			/**根据邮箱查询*/
 				query = new Query(Criteria.where("email").is(user.getEmail()));
-				user = userMongoDao.findOne(query);
+				user = userMongoDaoImpl.findOne(query);
 					if(null==user){
 						/**根据手机查询*/
 						query = new Query(Criteria.where("mobile").is(user.getMobile()));
-						user = userMongoDao.findOne(query);
+						user = userMongoDaoImpl.findOne(query);
 					}
 			} 
 		if(null!=user && user.getPassword().equals(password)){
@@ -76,7 +75,7 @@ public class UserService{
 	public User getUserByName(){
 		String usernameLogin = (String) session.getAttribute("usernameLogin");
 		Query query = new Query(Criteria.where("username").is(usernameLogin));
-		return userMongoDao.findOne(query);
+		return userMongoDaoImpl.findOne(query);
 	}
 
 }

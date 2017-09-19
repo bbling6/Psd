@@ -6,7 +6,7 @@ import com.scut.psd.dao.po.CalculateData;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class DataProcessMongoDao extends AbstractBaseMongoDao<CalculateData> {
+public class DataProcessMongoDaoImpl extends AbstractBaseMongoDao<CalculateData> {
 
     @Override
     public Class<CalculateData> getEntityClass() {

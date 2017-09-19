@@ -23,7 +23,7 @@ public class CalculateData {
     /**
      * 用户
      */
-    private String userId;
+    private User user;
     /**
      * 算法参数
      */
@@ -45,8 +45,8 @@ public class CalculateData {
      */
     private String createTime;
 
-    public CalculateData(String userId,LaunchSignal launchSignal,Algorithm algorithm,Map<String,List<String>> resultMap,String createTime){
-        this.userId = userId;
+    public CalculateData(User user,LaunchSignal launchSignal,Algorithm algorithm,Map<String,List<String>> resultMap,String createTime){
+        this.user = user;
         this.algorithm = algorithm;
         this.launchSignal = launchSignal;
         this.resultMap = resultMap;

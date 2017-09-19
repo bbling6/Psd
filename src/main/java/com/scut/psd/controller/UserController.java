@@ -45,7 +45,7 @@ public class UserController {
 	public String logOut(HttpSession session){
 		  String username = (String) session.getAttribute("loginUsername");
 		  if(username!=null && !username.isEmpty()){
-			  session.removeAttribute("loginUsername");
+			  session.removeAttribute("usernameLogin");
 		  }else{
 			  
 		  }
