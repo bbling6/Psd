@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.query.Update;
 
 import java.util.List;
 
-public abstract class BaseMongoDaoImpl<T> implements IBaseMongoDao<T>{
+public abstract class AbstractBaseMongoDao<T> implements IBaseMongoDao<T>{
 
     @Autowired
     private MongoTemplate mongoTemplate;
