@@ -1,6 +1,5 @@
 package com.scut.psd.dao.base;
 
-import com.scut.psd.web.entity.Pagination;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 

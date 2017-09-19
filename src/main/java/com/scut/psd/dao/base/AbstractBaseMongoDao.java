@@ -12,7 +12,7 @@ public abstract class AbstractBaseMongoDao<T> implements IBaseMongoDao<T>{
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    @Override
+    @Autowired
     public List<T> find(Query query) {
         return mongoTemplate.find(query, this.getEntityClass(), this.getCollectionName());
     }
