@@ -1,6 +1,6 @@
 package com.scut.psd.service;
 
-import com.scut.psd.dao.UserMongoDaoImpl;
+import com.scut.psd.dao.impl.UserMongoDaoImpl;
 import com.scut.psd.dao.po.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;

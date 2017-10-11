@@ -1,12 +1,12 @@
 package com.scut.psd.controller;
 
-import com.scut.psd.cache.LocalCache;
+import com.scut.psd.utils.LocalCache;
 import com.scut.psd.constant.PageQuality;
 import com.scut.psd.dao.po.CalculateData;
 import com.scut.psd.service.DataProcessService;
-import com.scut.psd.web.entity.Algorithm;
-import com.scut.psd.web.entity.LaunchSignal;
-import com.scut.psd.web.entity.Pagination;
+import com.scut.psd.web.request.Algorithm;
+import com.scut.psd.web.request.LaunchSignal;
+import com.scut.psd.entity.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

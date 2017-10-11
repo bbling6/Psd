@@ -1,13 +1,13 @@
 package com.scut.psd.dao.po;
 
-import com.scut.psd.web.entity.Algorithm;
-import com.scut.psd.web.entity.LaunchSignal;
+import com.scut.psd.web.request.Algorithm;
+import com.scut.psd.web.request.LaunchSignal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +23,7 @@ public class CalculateData {
     /**
      * 用户
      */
+    @DBRef
     private User user;
     /**
      * 算法参数

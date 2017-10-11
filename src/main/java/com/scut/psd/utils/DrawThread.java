@@ -1,8 +1,8 @@
-package com.scut.psd.thread;
+package com.scut.psd.utils;
 
 import com.scut.psd.matlab.DrawPsd;
-import com.scut.psd.web.entity.Algorithm;
-import com.scut.psd.web.entity.LaunchSignal;
+import com.scut.psd.web.request.Algorithm;
+import com.scut.psd.web.request.LaunchSignal;
 
 public class DrawThread extends Thread{
 

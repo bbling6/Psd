@@ -1,4 +1,4 @@
-package com.scut.psd.web.vo;
+package com.scut.psd.web.request;
 
 import lombok.Data;
 

@@ -12,5 +12,4 @@ public class CardinalConst {
     public static final Integer PMCOV = 1000;
 
     public static final Integer PYULEAR = 10000;
-
 }

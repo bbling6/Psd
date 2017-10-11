@@ -1,4 +1,4 @@
-package com.scut.psd.design.factory;
+package com.scut.psd.utils.design.factory;
 
 public class AlgorithmFactory {
 

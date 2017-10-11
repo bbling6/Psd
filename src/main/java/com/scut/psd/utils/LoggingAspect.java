@@ -1,4 +1,4 @@
-package com.scut.psd.aop;
+package com.scut.psd.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.log4j.Logger;

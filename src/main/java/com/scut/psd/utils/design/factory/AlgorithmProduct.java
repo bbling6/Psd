@@ -1,8 +1,8 @@
-package com.scut.psd.design.factory;
+package com.scut.psd.utils.design.factory;
 
 
-import com.scut.psd.web.entity.Algorithm;
-import com.scut.psd.web.entity.LaunchSignal;
+import com.scut.psd.web.request.Algorithm;
+import com.scut.psd.web.request.LaunchSignal;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.scut.psd.web.entity;
+package com.scut.psd.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

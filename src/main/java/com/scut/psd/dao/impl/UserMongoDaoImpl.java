@@ -1,7 +1,7 @@
-package com.scut.psd.dao;
+package com.scut.psd.dao.impl;
 
 import com.scut.psd.constant.CollectionConst;
-import com.scut.psd.dao.base.AbstractBaseMongoDao;
+import com.scut.psd.dao.AbstractBaseMongoDao;
 import com.scut.psd.dao.po.User;
 import org.springframework.stereotype.Repository;
 

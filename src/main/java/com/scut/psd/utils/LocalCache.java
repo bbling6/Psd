@@ -1,4 +1,4 @@
-package com.scut.psd.cache;
+package com.scut.psd.utils;
 
 import com.scut.psd.dao.po.User;
 import com.scut.psd.service.UserService;
